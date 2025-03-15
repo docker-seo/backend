@@ -2,6 +2,7 @@ package shop.mtcoding.product.controller;
 
 import java.util.List;
 
+import io.swagger.v3.oas.annotations.Operation;
 import org.springframework.boot.autoconfigure.kafka.KafkaProperties.Producer;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -20,6 +21,7 @@ public class ProductController {
     private final ProductRepository productRepository;
 
     @GetMapping("/products")
+    @Operation(summary = "모든 상품 조회", description = "등록된 모든 상품을 조회합니다.")
     public ResponseEntity<?> products() {
         List<Product> products = productRepository.findAll();
         return new ResponseEntity<>(products, HttpStatus.OK);
