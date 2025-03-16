@@ -17,7 +17,7 @@ public class SecurityConfig {
             .csrf(csrf -> csrf.disable())  // CSRF 비활성화 (필요하면 활성화 가능)
             .cors(cors -> cors.disable())  // 기본 CORS 설정을 사용하지 않음
             .authorizeHttpRequests(auth -> auth
-                .requestMatchers(new AntPathRequestMatcher("*")).permitAll()  // API 엔드포인트 허용
+                .requestMatchers(new AntPathRequestMatcher("/**")).permitAll()  // API 엔드포인트 허용
                 .anyRequest().authenticated() // 그 외 요청은 인증 필요
             )
             .sessionManagement(session -> session.sessionCreationPolicy(SessionCreationPolicy.STATELESS));  // 세션 사용 안 함
